@@ -428,31 +428,6 @@ class TestLanguage < Minitest::Test
     end
   end
 
-  def test_valid_codemirror_mode
-    Language.all.each do |language|
-      if mode = language.codemirror_mode
-        assert File.exist?(File.expand_path("../../vendor/CodeMirror/mode/#{mode}", __FILE__)), "#{mode} isn't a valid CodeMirror mode"
-      end
-    end
-  end
-
-  def test_codemirror_mode_and_mime_defined_by_meta_mapping
-    meta = File.read(File.expand_path("../../vendor/CodeMirror/mode/meta.js", __FILE__))
-    Language.all.each do |language|
-      next unless language.codemirror_mode && language.codemirror_mime_type
-      assert meta.match(/^.+#{Regexp.escape(language.codemirror_mime_type)}.+#{Regexp.escape(language.codemirror_mode)}.+$/), "#{language.inspect}: #{language.codemirror_mime_type} not defined under #{language.codemirror_mode}"
-    end
-  end
-
-  def test_codemirror_mime_declared_in_mode_file
-    Language.all.each do |language|
-      next unless language.codemirror_mode && language.codemirror_mime_type
-      filename = File.expand_path("../../vendor/CodeMirror/mode/#{language.codemirror_mode}/#{language.codemirror_mode}.js", __FILE__)
-      assert File.exist?(filename), "#{filename} does not exist"
-      assert File.read(filename).match(language.codemirror_mime_type), "#{language.inspect}: #{language.codemirror_mime_type} not defined in #{filename}"
-    end
-  end
-
   def test_all_popular_languages_exist
     popular = YAML.load(File.read(File.expand_path("../../lib/linguist/popular.yml", __FILE__)))
 

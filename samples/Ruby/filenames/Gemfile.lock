@@ -5,7 +5,6 @@ PATH
       charlock_holmes (~> 0.7.3)
       escape_utils (~> 1.0.1)
       mime-types (>= 1.19)
-      rugged (~> 0.22.0b1)
     github-linguist-grammars (4.0.1)
 
 GEM
@@ -25,7 +24,6 @@ GEM
       method_source (~> 0.8.1)
       slop (~> 3.4)
     rake (10.3.2)
-    rugged (0.22.0b1)
     slop (3.6.0)
     yajl-ruby (1.2.1)
 

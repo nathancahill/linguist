@@ -11,13 +11,11 @@ Gem::Specification.new do |s|
   s.license  = "MIT"
 
   s.files = Dir['lib/**/*'] + Dir['ext/**/*'] + Dir['grammars/*'] + ['LICENSE']
-  s.executables = ['github-linguist', 'git-linguist']
   s.extensions = ['ext/linguist/extconf.rb']
 
   s.add_dependency 'charlock_holmes', '~> 0.7.6'
   s.add_dependency 'escape_utils',    '~> 1.2.0'
   s.add_dependency 'mime-types',      '>= 1.19'
-  s.add_dependency 'rugged',          '>= 0.25.1'
 
   s.add_development_dependency 'minitest', '>= 5.0'
   s.add_development_dependency 'rake-compiler', '~> 0.9'
